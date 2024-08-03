@@ -29,9 +29,14 @@ try{
             }
         });
 
+        if (negatives.length > 0) {
+            throw new Error(`negative numbers not allowed ${negatives.join(', ')}`);
+        }
+
         return total;
     }
 console.log(add(1,2,3,4,5));
+console.log(add(-1,-2))
 } catch (e) {
     console.error(e.message);
 }
