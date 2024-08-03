@@ -15,7 +15,21 @@ try{
         }
 
         const numberList = numbersString.split(delimiter);
-        console.log(numberList)
+        
+        let total = 0;
+        let negatives = [];
+        numberList.forEach(item => {
+            if (item) {
+                const num = parseInt(item, 10);
+                if (num < 0) {
+                    negatives.push(num);
+                } else {
+                    total += num;
+                }
+            }
+        });
+
+        return total;
     }
 console.log(add(1,2,3,4,5));
 } catch (e) {
