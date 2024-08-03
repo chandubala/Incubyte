@@ -16,24 +16,19 @@ try{
 
         const numberList = numbersString.split(delimiter);
         
-        let total = 0;
         let negatives = [];
-        numberList.forEach(item => {
-            if (item) {
-                const num = parseInt(item, 10);
-                if (num < 0) {
-                    negatives.push(num);
-                } else {
-                    total += num;
-                }
-            }
-        });
+        const sum = numberList.reduce((acc, num) => {
+            const n = parseInt(num, 10);
+            if (isNaN(n)) return acc;
+            if (n < 0) negatives.push(n);
+            return acc + n;
+        }, 0);
 
         if (negatives.length > 0) {
             throw new Error(`negative numbers not allowed ${negatives.join(', ')}`);
         }
 
-        return total;
+        return sum;
     }
 console.log(add(1,2,3,4,5));
 console.log(add(-1,-2))
